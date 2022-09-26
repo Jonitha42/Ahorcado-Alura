@@ -15,12 +15,12 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
+  padding: 8px 16px;
 }
 
 .header__container{
   width: 100%;
-  height: 72px;
+  height: 62px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,6 +28,10 @@ body{
 
 .header__container img{
   max-width: 88px;
+}
+
+.header__title{
+  color: slateblue;
 }
 
 .main__container{
@@ -44,15 +48,37 @@ body{
   gap: 12px;
 }
 
+.used__letters_description{
+  font-size: 12px;
+  letter-spacing: normal;
+}
+
+
+.main__letter_used{
+  text-align: center;
+  word-break: break-all;
+  margin-top: 24px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  color: rgb(126, 114, 201);
+}
+
+
+
 
 input[type="text"]{
   outline: none;
+  text-transform: uppercase;
   text-align: center;
-  border-bottom: 2px solid blue ;
+  border-bottom: 2px solid slateblue ;
   font-size: 16px;
   color: slateblue;
   font-weight: bold;
-  width: 35%;
+  width: 50%;
+}
+
+input[type="text"]::placeholder{
+  color: rgb(144, 137, 194);
 }
 
 .btn{
@@ -68,7 +94,38 @@ input[type="text"]{
   border-radius: 12px;
   color: slateblue;
   padding: 12px 24px;
+}
 
+
+.main__canvas{
+  border: 2px solid slateblue;
+  border-radius: 12px;
+}
+
+
+.wanted{
+  color: transparent;
+}
+
+.letter{
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 8px;
+  position: relative;
+}
+
+
+
+.letter::after{
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0;
+  height: 2px;
+  background-color: slateblue;
+  width: 100%;
+  min-width: 12px;
 }
 
 

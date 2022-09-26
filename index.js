@@ -3,6 +3,11 @@ const wordContainer = document.getElementById("wordContainer");
 const inputLetter = document.getElementById("inputLetter");
 const btnCheck = document.getElementById("btnCheck");
 const usedLettersContainers = document.getElementById("usedLetters");
+const canvas = document.getElementById("canvas");
+
+const newGame = document.getElementById("newGame");
+const desist = document.getElementById("desist");
+
 
 const regEx = /[a-zA-Zñ]/g;
 
@@ -13,9 +18,7 @@ let success = 0;
 
 const randomWords = () => {
   let random = words[Math.floor(Math.random() * words.length)].toUpperCase();
-
   wordSelected = random.split("");
-
   return wordSelected;
 };
 
@@ -30,53 +33,69 @@ const toDash = () => {
   });
 };
 
-const youWin = () => {
-  alert("ganaste")
-  success = 0
+const resetGame = () => {
+  inputLetter.style.display = "none";
+  btnCheck.style.display = "none";
+  desist.style.display = "none";
+
 }
+
+const youWin = () => {
+  ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#64ba69";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.font = "36px Verdana";
+  ctx.fillStyle = "#000000";
+  ctx.fillText("Ganaste!!!", 70, 70);
+  
+  resetGame(); 
+};
+
+
 
 
 const youLose = () => {
-  alert("perdiste")
-  error = 0
-}
+  ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#ef534e";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.font = "36px Verdana";
+  ctx.fillStyle = "#000000";
+  ctx.fillText("Perdiste!!!", 70, 70);
+  
+  resetGame(); 
+};
 
 const incorrectLetter = () => {
-  error++
-  if(error == 5){
-    youLose()
-
+  error++;
+  if (error == 5) {
+    youLose();
   }
-}
+};
 
 const addLetter = (letter) => {
   const elementLetter = document.createElement("span");
   elementLetter.innerHTML = letter.toUpperCase();
-  usedLettersContainers.appendChild(elementLetter)
-
-}
+  usedLettersContainers.appendChild(elementLetter);
+};
 
 const sendingLetter = (letter) => {
-  if(wordSelected.includes(letter)){
+  if (wordSelected.includes(letter)) {
     correctLetter(letter);
-
-  }else{
+  } else {
     incorrectLetter();
-    draw()
+    draw();
   }
-  addLetter(letter)
-  usedLetters.push(letter)
-  inputLetter.value = ""
-  inputLetter.focus()
-}
+  addLetter(letter);
+  usedLetters.push(letter);
+  inputLetter.value = "";
+  inputLetter.focus();
+};
 
 const letterEvent = () => {
   let letter = inputLetter.value.toUpperCase();
   if (letter.match(regEx) && !usedLetters.includes(letter)) {
     sendingLetter(letter);
   }
-
-
 };
 
 const correctLetter = (letter) => {
@@ -93,81 +112,91 @@ const correctLetter = (letter) => {
   }
 };
 
-
 const draw = () => {
-
-  const canvas = document.getElementById("canvas");
   if (canvas.getContext) {
     const ctx = canvas.getContext("2d");
-
+    if(error === 0) {
       //horca
     ctx.beginPath();
-    ctx.moveTo(70,200)
-    ctx.lineTo(70,10)
-    ctx.lineTo(150,10);
-    ctx.lineTo(150,20)
+    ctx.strokeStyle = "#6a5acd";
+    ctx.lineWidth = 3;
+    ctx.moveTo(70, 200);
+    ctx.lineTo(70, 10);
+    ctx.lineTo(150, 10);
+    ctx.lineTo(150, 20);
     ctx.stroke();
-
-
-     if(error === 1){
-    //Cabeza
-    ctx.beginPath();
-    ctx.arc(150,40,20,0, Math.PI * 2)
-    ctx.stroke()
-
     }
     
-    if( error === 2){
+
+    if (error === 1) {
+      //Cabeza
+      ctx.beginPath();
+      ctx.strokeStyle = "#6a5acd";
+      ctx.lineWidth = 3;
+      ctx.arc(150, 40, 20, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    if (error === 2) {
       //cuerpo
-    ctx.beginPath();
-    ctx.moveTo(150,60)
-    ctx.lineTo(150,100)
-    ctx.stroke()
-
+      ctx.beginPath();
+      ctx.strokeStyle = "#6a5acd";
+      ctx.lineWidth = 3;
+      ctx.moveTo(150, 60);
+      ctx.lineTo(150, 100);
+      ctx.stroke();
     }
-    
-    if( error === 3){
+
+    if (error === 3) {
       //brazos
-    ctx.beginPath();
-    ctx.moveTo(150,60)
-    ctx.lineTo(130,100)
-    ctx.stroke()
+      ctx.beginPath();
+      ctx.strokeStyle = "#6a5acd";
+      ctx.lineWidth = 3;
+      ctx.moveTo(150, 60);
+      ctx.lineTo(130, 100);
+      ctx.stroke();
 
-    ctx.beginPath();
-    ctx.moveTo(150,60)
-    ctx.lineTo(170,100)
-    ctx.stroke()
-  
+      ctx.beginPath();
+      ctx.strokeStyle = "#6a5acd";
+      ctx.lineWidth = 3;
+      ctx.moveTo(150, 60);
+      ctx.lineTo(170, 100);
+      ctx.stroke();
     }
 
-    if( error === 4) {
-          //piernas
-    ctx.beginPath();
-    ctx.moveTo(150,100)
-    ctx.lineTo(170,130)
-    ctx.stroke()
+    if (error === 4) {
+      //piernas
+      ctx.beginPath();
+      ctx.strokeStyle = "#6a5acd";
+      ctx.lineWidth = 3;
+      ctx.moveTo(150, 100);
+      ctx.lineTo(170, 130);
+      ctx.stroke();
 
-    ctx.beginPath();
-    ctx.moveTo(150,100)
-    ctx.lineTo(130,130)
-    ctx.stroke()
+      ctx.beginPath();
+
+      ctx.moveTo(150, 100);
+      ctx.lineTo(130, 130);
+      ctx.stroke();
     }
-    
-
   }
+};
 
-}
 
-draw();
 
 const iniciarJuego = () => {
+  error = 0
+  success = 0
   usedLetters = [];
   wordContainer.innerHTML = "";
   randomWords();
   toDash();
-
+  draw();
 };
 
 btnCheck.addEventListener("click", letterEvent);
 
-iniciarJuego();
+
+newGame.addEventListener("click", iniciarJuego);
+
+window.addEventListener("load", iniciarJuego());

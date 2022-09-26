@@ -70,7 +70,7 @@ input[type="text"]{
   outline: none;
   text-transform: uppercase;
   text-align: center;
-  border-bottom: 2px solid slateblue ;
+  border-bottom: 2px solid #6a5acd ;
   font-size: 16px;
   color: slateblue;
   font-weight: bold;

@@ -114,7 +114,7 @@ const correctLetter = (letter) => {
 };
 
 const draw = () => {
-  
+
     //horca
   ctx.beginPath();
   ctx.strokeStyle = "#6a5acd";
@@ -186,6 +186,9 @@ const draw = () => {
 
 const iniciarJuego = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  inputLetter.style.display = "block";
+  btnCheck.style.display = "block";
+  desist.style.display = "block";
   usedLetters = [];
   error = 0
   success = 0

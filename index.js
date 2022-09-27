@@ -115,7 +115,12 @@ const correctLetter = (letter) => {
 
 const draw = () => {
 
-    //horca
+  
+  
+  if (canvas.getContext) {
+    
+    if(error == 0){
+        //horca
   ctx.beginPath();
   ctx.strokeStyle = "#6a5acd";
   ctx.lineWidth = 3;
@@ -124,9 +129,7 @@ const draw = () => {
   ctx.lineTo(150, 10);
   ctx.lineTo(150, 20);
   ctx.stroke();
-  
-  if (canvas.getContext) {
-    
+    }
 
     if (error == 1) {
       //Cabeza
@@ -188,7 +191,7 @@ const iniciarJuego = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   inputLetter.style.display = "block";
   btnCheck.style.display = "block";
-  desist.classList.add("btn");
+  desist.style.display = "inline-block";
   usedLetters = [];
   error = 0
   success = 0

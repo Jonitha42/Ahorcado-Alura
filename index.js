@@ -3,7 +3,9 @@ const wordContainer = document.getElementById("wordContainer");
 const inputLetter = document.getElementById("inputLetter");
 const btnCheck = document.getElementById("btnCheck");
 const usedLettersContainers = document.getElementById("usedLetters");
-const canvas = document.getElementById("canvas");
+
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
 
 const newGame = document.getElementById("newGame");
 const desist = document.getElementById("desist");
@@ -36,9 +38,8 @@ const toDash = () => {
 const resetGame = () => {
   inputLetter.style.display = "none";
   btnCheck.style.display = "none";
-  desist.style.display = "none";
-
-}
+  desist.style.display = "none"; 
+} 
 
 const youWin = () => {
   ctx = canvas.getContext("2d");
@@ -113,22 +114,21 @@ const correctLetter = (letter) => {
 };
 
 const draw = () => {
+  
+    //horca
+  ctx.beginPath();
+  ctx.strokeStyle = "#6a5acd";
+  ctx.lineWidth = 3;
+  ctx.moveTo(70, 200);
+  ctx.lineTo(70, 10);
+  ctx.lineTo(150, 10);
+  ctx.lineTo(150, 20);
+  ctx.stroke();
+  
   if (canvas.getContext) {
-    const ctx = canvas.getContext("2d");
-    if(error === 0) {
-      //horca
-    ctx.beginPath();
-    ctx.strokeStyle = "#6a5acd";
-    ctx.lineWidth = 3;
-    ctx.moveTo(70, 200);
-    ctx.lineTo(70, 10);
-    ctx.lineTo(150, 10);
-    ctx.lineTo(150, 20);
-    ctx.stroke();
-    }
     
 
-    if (error === 1) {
+    if (error == 1) {
       //Cabeza
       ctx.beginPath();
       ctx.strokeStyle = "#6a5acd";
@@ -137,7 +137,7 @@ const draw = () => {
       ctx.stroke();
     }
 
-    if (error === 2) {
+    if (error == 2) {
       //cuerpo
       ctx.beginPath();
       ctx.strokeStyle = "#6a5acd";
@@ -147,7 +147,7 @@ const draw = () => {
       ctx.stroke();
     }
 
-    if (error === 3) {
+    if (error == 3) {
       //brazos
       ctx.beginPath();
       ctx.strokeStyle = "#6a5acd";
@@ -164,7 +164,7 @@ const draw = () => {
       ctx.stroke();
     }
 
-    if (error === 4) {
+    if (error == 4) {
       //piernas
       ctx.beginPath();
       ctx.strokeStyle = "#6a5acd";
@@ -185,18 +185,22 @@ const draw = () => {
 
 
 const iniciarJuego = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  usedLetters = [];
   error = 0
   success = 0
-  usedLetters = [];
   wordContainer.innerHTML = "";
+  usedLettersContainers.innerHTML = "";
+  draw();
   randomWords();
   toDash();
-  draw();
+  btnCheck.addEventListener("click", letterEvent);
 };
 
-btnCheck.addEventListener("click", letterEvent);
 
 
-newGame.addEventListener("click", iniciarJuego);
 
-window.addEventListener("load", iniciarJuego());
+newGame.addEventListener("click",
+  iniciarJuego)
+
+// window.addEventListener("load", iniciarJuego);

@@ -188,7 +188,7 @@ const iniciarJuego = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   inputLetter.style.display = "block";
   btnCheck.style.display = "block";
-  desist.style.display = "block";
+  desist.classList.add("btn");
   usedLetters = [];
   error = 0
   success = 0

@@ -39,7 +39,9 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  gap: 52px;
+  height: 50vh;
+  width: 100%;
 }
 
 
@@ -48,9 +50,48 @@ body{
   border-radius: 12px;
   color: white;
   padding: 12px 24px;
+  cursor: po;
 }
 
 a{
   color: transparent;
 }
+
+
+.main__button__checkletter{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+input[type="text"]{
+  outline: none;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 2px solid #6a5acd ;
+  font-size: 14px;
+  color: slateblue;
+  font-weight: bold;
+  width: 75%;
+}
+
+input[type="text"]::placeholder{
+  color: rgb(144, 137, 194);
+}
+
+.main_info{
+  display: inline-block;
+  color: slateblue;
+  font-size: 12px;
+  font-style: italic;
+  margin-top: -20px;
+  margin-right: 170px;
+}
+
+.main__text{
+  color: #6a5acd;
+  font-size: 18px;
+}
+
+
 

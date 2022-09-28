@@ -115,8 +115,6 @@ const correctLetter = (letter) => {
 
 const draw = () => {
 
-  
-  
   if (canvas.getContext) {
     
     if(error == 0){
@@ -186,7 +184,6 @@ const draw = () => {
 };
 
 
-
 const iniciarJuego = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   inputLetter.style.display = "block";
@@ -209,4 +206,4 @@ const iniciarJuego = () => {
 newGame.addEventListener("click",
   iniciarJuego)
 
-// window.addEventListener("load", iniciarJuego);
+window.addEventListener("load", iniciarJuego);

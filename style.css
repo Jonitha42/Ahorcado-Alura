@@ -90,6 +90,10 @@ input[type="text"]::placeholder{
   padding: 12px 24px;
 }
 
+a{
+  color: transparent;
+}
+
 .btn-outline{
   border: 1px solid slateblue;
   background-color: transparent;

@@ -39,7 +39,7 @@ body{
   gap: 32px;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
+  height: 80vh;
 }
 
 .main__button__checkletter{

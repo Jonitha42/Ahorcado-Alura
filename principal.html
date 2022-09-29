@@ -20,8 +20,8 @@
         <p class="main__text">O...</p>
 
         <div class="main__button__checkletter">
-          <input type="text" maxlength="8" placeholder="Ingrese su palabra">
-          <input class="btn" type="button" value="Enviar" id="btnPersonalizado" />
+          <input id="newWord" type="text" pattern="[A-Z]{3,8}" placeholder="Ingrese su palabra">
+          <input id="btnSend" class="btn" type="button" value="Enviar" id="btnPersonalizado" />
         </div>
         <span class="main_info">Menos de 8 letras!</span>
 
@@ -30,5 +30,6 @@
         Creado por <a target="_blank"  href="https://github.com/Jonitha42">Jonathan Pardo</a>
       </footer>
     </div>
+    <script src="principal.js" type="module"></script>
   </body>
 </html>

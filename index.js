@@ -1,4 +1,40 @@
-const words = ["corre", "perro", "gato", "casa", "hola"];
+const words = [
+  "corre",
+  "perro",
+  "gato",
+  "casa",
+  "hola",
+  "mate",
+  "pata",
+  "torta",
+  "teclado",
+  "estufa",
+  "cuadro",
+  "maceta",
+  "mantel",
+  "cajon",
+  "linterna",
+  "foca",
+  "foco",
+  "lampara",
+  "raton",
+  "rata",
+  "caballo",
+  "jirafa",
+  "tostada",
+  "termo",
+  "hora",
+  "cable",
+  "mochila",
+  "pantalon",
+  "remera",
+  "camisa",
+  "cartera",
+  "estuche",
+  "carpeta",
+  "cinto",
+];
+console.log(words)
 const wordContainer = document.getElementById("wordContainer");
 const inputLetter = document.getElementById("inputLetter");
 const btnCheck = document.getElementById("btnCheck");
@@ -9,7 +45,6 @@ let ctx = canvas.getContext("2d");
 
 const newGame = document.getElementById("newGame");
 const desist = document.getElementById("desist");
-
 
 const regEx = /[a-zA-Zñ]/g;
 
@@ -38,8 +73,8 @@ const toDash = () => {
 const resetGame = () => {
   inputLetter.style.display = "none";
   btnCheck.style.display = "none";
-  desist.style.display = "none"; 
-} 
+  desist.style.display = "none";
+};
 
 const youWin = () => {
   ctx = canvas.getContext("2d");
@@ -48,12 +83,9 @@ const youWin = () => {
   ctx.font = "36px Verdana";
   ctx.fillStyle = "#000000";
   ctx.fillText("Ganaste!!!", 70, 70);
-  
-  resetGame(); 
+
+  resetGame();
 };
-
-
-
 
 const youLose = () => {
   ctx = canvas.getContext("2d");
@@ -62,8 +94,8 @@ const youLose = () => {
   ctx.font = "36px Verdana";
   ctx.fillStyle = "#000000";
   ctx.fillText("Perdiste!!!", 70, 70);
-  
-  resetGame(); 
+
+  resetGame();
 };
 
 const incorrectLetter = () => {
@@ -114,19 +146,17 @@ const correctLetter = (letter) => {
 };
 
 const draw = () => {
-
   if (canvas.getContext) {
-    
-    if(error == 0){
-        //horca
-  ctx.beginPath();
-  ctx.strokeStyle = "#6a5acd";
-  ctx.lineWidth = 3;
-  ctx.moveTo(70, 200);
-  ctx.lineTo(70, 10);
-  ctx.lineTo(150, 10);
-  ctx.lineTo(150, 20);
-  ctx.stroke();
+    if (error == 0) {
+      //horca
+      ctx.beginPath();
+      ctx.strokeStyle = "#6a5acd";
+      ctx.lineWidth = 3;
+      ctx.moveTo(70, 200);
+      ctx.lineTo(70, 10);
+      ctx.lineTo(150, 10);
+      ctx.lineTo(150, 20);
+      ctx.stroke();
     }
 
     if (error == 1) {
@@ -183,15 +213,14 @@ const draw = () => {
   }
 };
 
-
 const iniciarJuego = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   inputLetter.style.display = "block";
   btnCheck.style.display = "block";
   desist.style.display = "inline-block";
   usedLetters = [];
-  error = 0
-  success = 0
+  error = 0;
+  success = 0;
   wordContainer.innerHTML = "";
   usedLettersContainers.innerHTML = "";
   draw();
@@ -200,10 +229,7 @@ const iniciarJuego = () => {
   btnCheck.addEventListener("click", letterEvent);
 };
 
-
-
-
-newGame.addEventListener("click",
-  iniciarJuego)
+newGame.addEventListener("click", iniciarJuego);
 
 window.addEventListener("load", iniciarJuego);
+

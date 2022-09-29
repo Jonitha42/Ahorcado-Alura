@@ -34,11 +34,11 @@ const words = [
   "carpeta",
   "cinto",
 ];
-console.log(words)
 const wordContainer = document.getElementById("wordContainer");
 const inputLetter = document.getElementById("inputLetter");
 const btnCheck = document.getElementById("btnCheck");
 const usedLettersContainers = document.getElementById("usedLetters");
+
 
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
@@ -60,7 +60,6 @@ const randomWords = () => {
 };
 
 const toDash = () => {
-  console.log(wordSelected);
   wordSelected.forEach((letter) => {
     const pLetter = document.createElement("span");
     pLetter.innerHTML = letter.toUpperCase();
